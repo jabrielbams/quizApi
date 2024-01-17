@@ -6,7 +6,7 @@ const { verifyToken } = require("../middleware/authJwt");
 router.post("/", [verifyToken], quizController.create);
 
 router.get("/", quizController.getAll);
-router.get("/:id", quizController.findOne);
+router.get("/:id", [verifyToken], quizController.findOne);
 router.get("/category/:id", quizController.getByCategoryId);
 router.get("/level/:id", quizController.getByLevelId);
 

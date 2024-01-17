@@ -1,5 +1,6 @@
+const db = require("../models");
 const config = require("../config/auth");
-const User = require("../models/user");
+const User = db.user;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
@@ -11,7 +12,6 @@ const signup = async (req, res) => {
     password: bcrypt.hashSync(req.body.password, 8),
   });
 
-  console.log(req.body.username);
   console.log(table);
   res.status(201).json({
     message: "success",
